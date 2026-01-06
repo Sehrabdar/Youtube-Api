@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from '../styles/search.bar.module.css';
 
 interface Props {
   onSearch: (term: string) => void;
@@ -14,14 +15,15 @@ export default function SearchBar({ onSearch }: Props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.container}>
       <input
+        className={styles.input}
         type="text"
         value={term}
         onChange={(e) => setTerm(e.target.value)}
         placeholder="Search Youtube videos (e.g. Carryminati)"
       />
-      <button type="submit">
+      <button className={styles.btn} type="submit">
         Search
       </button>
     </form>

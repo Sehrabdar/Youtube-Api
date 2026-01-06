@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { youtubeApi, type VideoSummary } from "../api/youtube.api";
+import styles from '../styles/video-summary.module.css';
 
 export default function VideoSummaryPage() {
     const { id } = useParams<{ id: string }>();
@@ -31,13 +32,13 @@ export default function VideoSummaryPage() {
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             {summary && (
-                <div>
-                    <h2>{summary?.title}</h2>
-                    <div>
-                        <h3>Description: {summary?.description}</h3>
-                        <span>👁️Views: {summary?.viewCount} </span>
-                        <span>👍Likes: {summary?.likeCount} </span>
-                        <span>🕐Duration: {summary?.duration} </span>
+                <div className={styles.wrapper}>
+                    <h2 className={styles.h2}> {summary?.title}</h2>
+                    <div className={styles.meta}>
+                        <h3 className={styles.description}>Description: {summary?.description}</h3>
+                        <span className={styles.badge}>👁️Views: {summary?.viewCount} </span>
+                        <span className={styles.badge}>👍Likes: {summary?.likeCount} </span>
+                        <span className={styles.badge}>🕐Duration: {summary?.duration} </span>
                     </div>
                 </div>
             )}
